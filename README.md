@@ -12,6 +12,7 @@ For now (v1.0.0) you can do this changes:
 
 ### Remove duplicate options values
 This script allow us to remove duplicates options values (sometimes you can have duplicates because of no sensitive-cases for examples)
+For now (v1.0.0), only values for select is operational. Have to work on multiselect.
 
 ## CONFIG
 You need to link your script to a database.

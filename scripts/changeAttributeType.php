@@ -21,23 +21,23 @@ function changeAttributeType($attributeCode, $newType)
             if ($actualType === 'select') {
                 $connexion->exec(
                     'INSERT INTO catalog_product_entity_' . $backend . ' (attribute_id, store_id, value, entity_id ) 
-SELECT eao.attribute_id, eaov.store_id, eaov.value, cpei.entity_id FROM eav_attribute_option_value as eaov
-JOIN eav_attribute_option as eao on eaov.option_id = eao.option_id 
-JOIN catalog_product_entity_int as cpei ON cpei.attribute_id = eao.attribute_id 
-AND cpei.value = eao.option_id AND cpei.store_id = eaov.store_id
-where eao.attribute_id =' . $id);
+                SELECT eao.attribute_id, eaov.store_id, eaov.value, cpei.entity_id FROM eav_attribute_option_value as eaov
+                JOIN eav_attribute_option as eao on eaov.option_id = eao.option_id 
+                JOIN catalog_product_entity_int as cpei ON cpei.attribute_id = eao.attribute_id 
+                AND cpei.value = eao.option_id AND cpei.store_id = eaov.store_id
+                where eao.attribute_id =' . $id);
 
                 $connexion->exec('DELETE FROM catalog_product_entity_int WHERE attribute_id = ' . $id);
                 $connexion->exec('DELETE eaov FROM eav_attribute_option_value as eaov
-JOIN eav_attribute_option as eao on eaov.option_id = eao.option_id WHERE eao.attribute_id =' . $id);
+                    JOIN eav_attribute_option as eao on eaov.option_id = eao.option_id WHERE eao.attribute_id =' . $id);
                 $connexion->exec('DELETE FROM eav_attribute_option WHERE attribute_id =' . $id);
             }
 
             if ($actualType === 'text') {
                 $connexion->exec(
                     'INSERT INTO catalog_product_entity_' . $backend . ' (attribute_id, store_id, value, entity_id ) 
-SELECT attribute_id, store_id, value, entity_id FROM catalog_product_entity_varchar 
-where eao.attribute_id =' . $id);
+                    SELECT attribute_id, store_id, value, entity_id FROM catalog_product_entity_varchar 
+                    where eao.attribute_id =' . $id);
 
                 $connexion->exec('DELETE FROM catalog_product_entity_varchar WHERE attribute_id = ' . $id);
             }
