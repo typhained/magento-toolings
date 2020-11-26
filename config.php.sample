@@ -1,0 +1,4 @@
+<?php
+const DSN = <mysql:dbname=yourdatabasename;host=localhost>;
+const USER = <youruser>;
+const PASSWORD = <yourpassword>;
